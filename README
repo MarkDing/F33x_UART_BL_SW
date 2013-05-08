@@ -1,0 +1,5 @@
+F330 UART bootloader 
+It contains several parts.
+* Bootloader firmware 
+* PC software application
+* Sample user application code
