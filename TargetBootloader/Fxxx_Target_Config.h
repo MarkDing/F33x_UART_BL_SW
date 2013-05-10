@@ -35,12 +35,12 @@
 // Target Config Options (common to BL & App)
 // ------------------------------------------
 
-#define TGT_PRODUCT_CODE         0x00  // Company-specific product ID
-#define TGT_BL_TYPE              0x81  // BL Type = UART
+#define TGT_PRODUCT_CODE         0x33  // Company-specific product ID
+#define TGT_BL_TYPE              0x1  // BL Type = UART
 // => "Fxxx_BL132_SMB0_Interface.h" should be included.
 
 #define TGT_FLASH_PAGE_SIZE      512   // Number of bytes per flash page
-#define TGT_FLASH_PAGE_SIZE_CODE 9     // Code=9 => Page size = 2^9 = 512 bytes.
+#define TGT_FLASH_PAGE_SIZE_CODE 1     // Flash Page Size Code: 1 => 512 bytes
 
 
 // Note: For serial streams like UART where "packets" are not applicable, the packet size 
@@ -60,7 +60,7 @@
 
 // Specify 24-bit linear addresses here (do not use banked 16-bit addresses)
 #define APP_FW_START_ADDR        0x0400
-#define APP_FW_END_ADDR          0x1DFF
+#define APP_FW_END_ADDR          0x1BFF
 
 #define APP_FW_SIG0_ADDR         APP_FW_END_ADDR
 

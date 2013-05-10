@@ -156,7 +156,7 @@ HW_INTVEC_SEPARATION  EQU 8         ;HW Interrupt vector separation is 8 Bytes
 ;   BL FW's USB_BL_Defs.h (APP_START_PAGE)
 ;   App FW's STARTUP.A51, Compiler and Linker command lines
 PUBLIC START_APPLICATION            ;The entry point (relocated reset vector)
-START_APPLICATION     EQU  0200h    ;for the application FW project
+START_APPLICATION     EQU  0400h    ;for the application FW project
 
 INTVEC_TABLE          EQU  START_APPLICATION+3  ;Interrupt vector table starts here
 INTVEC_SEPARATION     EQU  3        ;Interrupt vector separation is 3 Bytes

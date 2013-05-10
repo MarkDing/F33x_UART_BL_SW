@@ -59,7 +59,6 @@
 void OSCILLATOR_Init(void);
 void PORT_Init(void);
 void UART0_Init(void);
-void TIMER0_Init(void);
 
 //=============================================================================
 // Function Definitions
@@ -75,7 +74,6 @@ void Device_Init(void)
     OSCILLATOR_Init(); // Configure system clock
     PORT_Init(); // Initialize crossbar
     UART0_Init(); // Init UART0 & Timer1 (Data source comm)
-    TIMER0_Init(); // Init Timer0 for LED blinks
 }
 
 //-----------------------------------------------------------------------------
@@ -123,28 +121,6 @@ void PORT_Init(void)
     XBR1 = 0x40; // Enable crossbar
 }
 
-//-----------------------------------------------------------------------------
-// TIMER0_Init
-//-----------------------------------------------------------------------------
-//
-// Return Value:  None
-// Parameters:    None
-//
-// Configure Timer0 to 16-bit Timer mode and generate an interrupt
-// every TIMER0_RL Timer0 cycles using SYSCLK/48 as the Timer0 time base.
-//
-//-----------------------------------------------------------------------------
-void TIMER0_Init(void)
-{
-
-    TH0 = TIMER0_RL_SLOW_HIGH; // Init Timer0 High register
-    TL0 = TIMER0_RL_SLOW_LOW; // Init Timer0 Low register
-
-    TMOD |= 0x01; // Timer0 in 16-bit mode
-    CKCON |= 0x02; // Timer0 uses a 1:48 prescaler
-    ET0 = 1; // Timer0 interrupt enabled
-}
-
 
 //-----------------------------------------------------------------------------
 // UART0_Init
@@ -190,8 +166,6 @@ void UART0_Init(void)
     TMOD &= ~0xf0; // TMOD: timer 1 in 8-bit autoreload
     TMOD |= 0x20;
     TR1 = 1; // START Timer1
-    IP |= 0x10; // Make UART high priority
-//    ES0 = 1; // Enable UART0 interrupts
 }
 
 

@@ -48,11 +48,9 @@
 //-----------------------------------------------------------------------------
 // Global Variables
 //-----------------------------------------------------------------------------
-U8 Rx_Buf[TGT_BL_BUF_SIZE];
-U8 Tx_Buf[TGT_BL_BUF_SIZE];
 
-U8 Flash_Key0;
-U8 Flash_Key1;
+U8 Flash_Key0 = 0xA5;
+U8 Flash_Key1 = 0xF1;
 
 //-----------------------------------------------------------------------------
 // Function Prototypes (Local)
@@ -63,24 +61,6 @@ U8 Flash_Key1;
 // Function Definitions
 //=============================================================================
 
-//-----------------------------------------------------------------------------
-// TGT_Pre_Flash
-//-----------------------------------------------------------------------------
-//
-// Return Value:  None
-// Parameters:    None
-//
-// Gets the FLKEY code out of Rx_Buf and clears Rx_Buf to help prevent flash
-// corruption.
-//-----------------------------------------------------------------------------
-void TGT_Pre_Flash(void)
-{
-    // Store relevant information
-    Flash_Key0 = Rx_Buf[1];
-    Flash_Key1 = Rx_Buf[2];
-    Rx_Buf[1] = 0;
-    Rx_Buf[2] = 0;
-}
 
 //-----------------------------------------------------------------------------
 // TGT_Erase_Page
@@ -91,28 +71,10 @@ void TGT_Pre_Flash(void)
 //
 // Erases one page of flash.
 //-----------------------------------------------------------------------------
-void TGT_Erase_Page(void)
+void TGT_Erase_Page(U16 Addr)
 {
-    // Command Format:
-    // [0] Command
-    // [1] flash key code0
-    // [2] flash key code1
-    // [3] addr0 (LSB)
-    // [4] addr1 (MSB)
-    // [5] N/A
-
-    // Response:
-    // [0] Response code
-
-    U8 AddrMSB = Rx_Buf[4];
-
-    // Address out-of-bounds
-    // Setup for flash operation
-    TGT_Pre_Flash();
-
     PSCTL |= 0x03;
-    Set_TX_TGT_RSP_OK();
-    FLASH_Modify((AddrMSB << 8), 0x00);
+    FLASH_Modify(Addr, 0x00);
 }
 
 //-----------------------------------------------------------------------------
@@ -122,48 +84,20 @@ void TGT_Erase_Page(void)
 // Return Value:  None
 // Parameters:    None
 //
-// Writes 1 - 32 bytes of flash.
+// Writes 512 bytes of flash.
 //-----------------------------------------------------------------------------
-void TGT_Write_Flash(void)
+void TGT_Write_Flash(U8 *buf, U16 addr)
 {
-    // Command Format:
-    // [0] Command
-    // [1] flash key code0
-    // [2] flash key code1
-    // [3] addr0 (LSB)
-    // [4] addr1 (MSB)
-    // [5] numbytes
-
-    // Bytes to write:
-    // [0] byte0
-    // [1] byte1
-    // [.] ...
-    // [numbytes-1] byte(numbytes-1)
-
-    // Response:
-    // [0] Response code
-
-    UU16 start_addr;
-    U8 numbytes;
-    U8 data * Rx_Buf_ptr = &Rx_Buf[6];
-
-    start_addr.U8[LSB] = Rx_Buf[3];
-    start_addr.U8[MSB] = Rx_Buf[4];
-    numbytes = Rx_Buf[5];
-
+	U8 * ptr = buf;
+	U16 count = TGT_FLASH_PAGE_SIZE;
     // Setup for flash operation
-    TGT_Pre_Flash();
-
-    Set_TX_TGT_RSP_OK();
-    while (numbytes--)
+    while (count--)
     {
         PSCTL |= 0x01;
-        FLASH_Modify(start_addr.U16, *(Rx_Buf_ptr));
-        Rx_Buf_ptr++;
-        start_addr.U16++;
+        FLASH_Modify(addr, *ptr++);
+        addr ++;
     }
 }
-
 //-----------------------------------------------------------------------------
 // End Of File
 //-----------------------------------------------------------------------------

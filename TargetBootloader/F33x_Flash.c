@@ -87,7 +87,6 @@ void FLASH_Modify(U16 addr, U8 byte)
 
     if((addr > APP_FW_END_ADDR) || (addr < APP_FW_START_ADDR))
     {
-		Set_TX_TGT_RSP_PARAMETER_INVALID();
     	return ;
     }
     VDM0CN = 0xA0; // Enable VDD monitor and high threshold

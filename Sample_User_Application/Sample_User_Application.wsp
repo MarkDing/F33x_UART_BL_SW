@@ -207,7 +207,7 @@ WindowName=
 ResourceID=0
 [WorkState_v1_1.DockState.Bar-4]
 BarID=59421
-Bars=110
+Bars=136
 Bar#0=0
 Bar#1=0
 Bar#2=0
@@ -278,46 +278,72 @@ Bar#66=0
 Bar#67=0
 Bar#68=0
 Bar#69=0
-Bar#70=62088
-Bar#71=62083
-Bar#72=62077
-Bar#73=62089
-Bar#74=62063
-Bar#75=62062
-Bar#76=62007
-Bar#77=61891
-Bar#78=61905
-Bar#79=62014
-Bar#80=61939
-Bar#81=61956
-Bar#82=61875
-Bar#83=61871
-Bar#84=33295
-Bar#85=33294
-Bar#86=268
-Bar#87=267
-Bar#88=33247
-Bar#89=33246
-Bar#90=266
-Bar#91=265
-Bar#92=264
-Bar#93=263
-Bar#94=262
-Bar#95=261
-Bar#96=260
-Bar#97=259
-Bar#98=258
-Bar#99=257
-Bar#100=256
-Bar#101=33239
-Bar#102=33240
-Bar#103=33238
-Bar#104=33241
-Bar#105=33237
-Bar#106=33236
-Bar#107=59403
-Bar#108=59141
-Bar#109=0
+Bar#70=0
+Bar#71=0
+Bar#72=0
+Bar#73=0
+Bar#74=0
+Bar#75=0
+Bar#76=0
+Bar#77=0
+Bar#78=0
+Bar#79=0
+Bar#80=0
+Bar#81=0
+Bar#82=0
+Bar#83=0
+Bar#84=0
+Bar#85=0
+Bar#86=0
+Bar#87=0
+Bar#88=0
+Bar#89=0
+Bar#90=0
+Bar#91=0
+Bar#92=0
+Bar#93=0
+Bar#94=0
+Bar#95=0
+Bar#96=62088
+Bar#97=62083
+Bar#98=62077
+Bar#99=62089
+Bar#100=62063
+Bar#101=62062
+Bar#102=62007
+Bar#103=61891
+Bar#104=61905
+Bar#105=62014
+Bar#106=61939
+Bar#107=61956
+Bar#108=61875
+Bar#109=61871
+Bar#110=33295
+Bar#111=33294
+Bar#112=268
+Bar#113=267
+Bar#114=33247
+Bar#115=33246
+Bar#116=266
+Bar#117=265
+Bar#118=264
+Bar#119=263
+Bar#120=262
+Bar#121=261
+Bar#122=260
+Bar#123=259
+Bar#124=258
+Bar#125=257
+Bar#126=256
+Bar#127=33239
+Bar#128=33240
+Bar#129=33238
+Bar#130=33241
+Bar#131=33237
+Bar#132=33236
+Bar#133=59403
+Bar#134=59141
+Bar#135=0
 Style=0
 ExStyle=0
 PrevFloating=False
@@ -1624,7 +1650,7 @@ MRUFloatCY=29
 MRUHorzDockCX=1920
 MRUHorzDockCY=29
 MRUVertDockCX=80
-MRUVertDockCY=620
+MRUVertDockCY=736
 MRUDockingState=0
 DockingStyle=61440
 TypeID=14947
@@ -1774,7 +1800,7 @@ Buttons=ILAIAAAAAAOBBIAAAAAAIKAIAAAAAAFFAIAAAAAADGBIAAAAAAKMAIAAAAAA
 BarID=59398
 XPos=410
 YPos=28
-MRUWidth=1607
+MRUWidth=6207
 Docking=True
 MRUDockID=59419
 MRUDockLeftPos=410
@@ -1809,7 +1835,7 @@ Buttons=FJAIAAAAAAHJAIAAAAAACNAIAAAAAAJBAIAAAAAAGNAIAAAAAAMBAIAAAAAAAAAAAAAAAADH
 BarID=59399
 XPos=276
 YPos=28
-MRUWidth=36953
+MRUWidth=39851
 Docking=True
 MRUDockID=0
 MRUDockLeftPos=276
@@ -1900,19 +1926,19 @@ IsActiveChildFrame=False
 [WorkState_v1_1.Frames.ChildFrames.Document-1]
 ptn_Child1=ViewFrame-0
 [WorkState_v1_1.Frames.ChildFrames.Document-1.ViewFrame-0]
-DocPathName=F33x_InfoBlock.c
-DocumentString=Source File
-DocTemplateIndex=0
-WindowPlacement=MCAAAAAACAAAAAAADAAAAAAAPPPPPPPPPPPPPPPPIPPPPPPPCOPPPPPPPKAAAAAAPKAAAAAAENEAAAAAAICAAAAA
-IsActiveChildFrame=True
-[WorkState_v1_1.Frames.ChildFrames.Document-2]
-ptn_Child1=ViewFrame-0
-[WorkState_v1_1.Frames.ChildFrames.Document-2.ViewFrame-0]
 DocPathName=STARTUP.A51
 DocumentString=Source File
 DocTemplateIndex=0
 WindowPlacement=MCAAAAAAAAAAAAAABAAAAAAAPPPPPPPPPPPPPPPPIPPPPPPPCOPPPPPPIMAAAAAAIMAAAAAANOEAAAAAJJCAAAAA
 IsActiveChildFrame=False
+[WorkState_v1_1.Frames.ChildFrames.Document-2]
+ptn_Child1=ViewFrame-0
+[WorkState_v1_1.Frames.ChildFrames.Document-2.ViewFrame-0]
+DocPathName=F33x_InfoBlock.c
+DocumentString=Source File
+DocTemplateIndex=0
+WindowPlacement=MCAAAAAACAAAAAAADAAAAAAAPPPPPPPPPPPPPPPPIPPPPPPPCOPPPPPPLEAAAAAALEAAAAAAAHEAAAAAMBCAAAAA
+IsActiveChildFrame=True
 [WorkState_v1_1.SerialPort]
 SerialPort=1
 [WorkState_v1_1.StepInc]
@@ -1936,7 +1962,7 @@ AssFormat=<Executable Name> <Input File(s)> <Flags>
 [WorkState_v1_1.Compiler]
 Compiler=C:\Keil\C51\BIN\C51.exe
 [WorkState_v1_1.CompFlag]
-CompFlag=DB OE BR INCDIR(C:\SiLabs\MCU\Inc) INTVECTOR(0x200) INTERVAL(3) CD
+CompFlag=DB OE BR INCDIR(C:\SiLabs\MCU\Inc) INTVECTOR(0x400) INTERVAL(3) CD
 [WorkState_v1_1.CompFormat]
 CompFormat=<Executable Name> <Input File(s)> <Flags> 
 [WorkState_v1_1.RunOptimizer]
@@ -1944,7 +1970,8 @@ RunOptimizer=0
 [WorkState_v1_1.Linker]
 Linker=C:\Keil\C51\BIN\bl51.exe
 [WorkState_v1_1.LinkFlag]
-LinkFlag=RS(256) PL(68) PW(78) CODE (0x400-0x1DFF, ?CO?F33X_INFOBLOCK(0x1DF5))
+LinkFlag=RS(256) PL(68) PW(78) CODE (0x400-0x1BFF, ?CO?F33X_INFOBLOCK(0x1BF5))
+
 [WorkState_v1_1.LinkFormat]
 LinkFormat=<Executable Name> <Input File(s)> TO <Output File> <Flags> 
 [WorkState_v1_1.PreprocFlag]
@@ -2004,20 +2031,20 @@ FileName=STARTUP.A51
 [WorkState_v1_1.CFiles]
 ptn_Child1=FileName
 [WorkState_v1_1.CFiles.FileName]
-FileName=F33x_InfoBlock.c
+FileName=F330_Blinky.c
 ptn_Child1=FileName
 [WorkState_v1_1.CFiles.FileName.FileName]
-FileName=F330_Blinky.c
+FileName=F33x_InfoBlock.c
 [WorkState_v1_1.LFiles]
 ptn_Child1=FileName
 [WorkState_v1_1.LFiles.FileName]
 FileName=STARTUP.obj
 ptn_Child1=FileName
 [WorkState_v1_1.LFiles.FileName.FileName]
-FileName=F33x_InfoBlock.obj
+FileName=F330_Blinky.obj
 ptn_Child1=FileName
 [WorkState_v1_1.LFiles.FileName.FileName.FileName]
-FileName=F330_Blinky.obj
+FileName=F33x_InfoBlock.obj
 [WorkState_v1_1.BankMap]
 [WorkState_v1_1.Folders]
 ptn_Child1=FolderName
@@ -2035,10 +2062,10 @@ FolderFlags=0
 FileName=STARTUP.A51
 ptn_Child1=FileName
 [WorkState_v1_1.Source Files.FileName.FileName]
-FileName=F33x_InfoBlock.c
+FileName=F330_Blinky.c
 ptn_Child1=FileName
 [WorkState_v1_1.Source Files.FileName.FileName.FileName]
-FileName=F330_Blinky.c
+FileName=F33x_InfoBlock.c
 [WorkState_v1_1.Header Files]
 ptn_Child1=FolderFlags
 [WorkState_v1_1.Header Files.FolderFlags]

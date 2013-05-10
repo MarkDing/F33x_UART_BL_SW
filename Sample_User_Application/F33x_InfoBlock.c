@@ -51,11 +51,11 @@ Byte offset (from last byte) - Field
 #define TGT_APP_INFOBLOCK_LENGTH 7
 
 #define TGT_MCU_CODE             0x39  // Code for this MCU partnumber
-#define TGT_BL_TYPE              0x04  // SMBUS BL
+#define TGT_BL_TYPE              0x01  // UART BL
 #define TGT_FLASH_PAGE_SIZE_CODE 0x01  // Flash Page Size Code: 1 => 512 bytes
 #define APP_FW_VERSION_HIGH      0x01
 #define APP_FW_VERSION_LOW       0x01
-#define SMBUS_DEVICE_ADDR        0x20
+#define	BL_SPECIFIC_BYTE         0x25
 // Signature Bytes
 #define SIG_BYTE0             0x3D
 #define SIG_BYTE1             0xC2
@@ -66,7 +66,7 @@ Byte offset (from last byte) - Field
 // Reverse byte order for Keil:
 SEGMENT_VARIABLE(TGT_App_InfoBlock[], const U8, SEG_CODE) =
 {
-	SMBUS_DEVICE_ADDR,
+	BL_SPECIFIC_BYTE,
 	APP_FW_VERSION_HIGH,
 	APP_FW_VERSION_LOW,
 	TGT_FLASH_PAGE_SIZE_CODE,

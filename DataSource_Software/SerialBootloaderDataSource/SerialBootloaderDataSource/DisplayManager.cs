@@ -30,10 +30,10 @@ namespace SerialBootloaderDataSource
         string[] mFieldName = 
         { 
             "MCU Code", "BL Type", "Flash Page Size",
-            "App FW Version", "SMBUS Device Addr",
+            "App FW Version", "Reserved", //""SMBUS Device Addr",
             "App Start Addr", "App End Addr" ,
-            "Reseved", "Reserved","Reserved"
-//            "BL FW Version", "BL Buffer Size", "CRC Type"
+//            "Reseved", "Reserved","Reserved"
+            "BL FW Version", "BL Buffer Size", "CRC Type"
         };
         const int cGridNumRows = 10;
 
