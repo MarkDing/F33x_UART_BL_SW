@@ -91,6 +91,7 @@ U8 data TGT_BL_InfoBlock[TGT_BL_FW_INFOBLOCK_LENGTH] =
 	TGT_DEVICE_SERIAL0,
 	TGT_DEVICE_SERIAL1
 };
+extern U8 data rx_buf[32];
 //-----------------------------------------------------------------------------
 // Function Prototypes (Local)
 //-----------------------------------------------------------------------------
@@ -103,14 +104,14 @@ U8 data TGT_BL_InfoBlock[TGT_BL_FW_INFOBLOCK_LENGTH] =
 //-----------------------------------------------------------------------------
 //
 // Return Value:  Response
-// Parameters:    Buf
+// Parameters:    None
 //
 //
 //
 //-----------------------------------------------------------------------------
-U8 SRC_Get_Info(U8 *buf)
+U8 SRC_Get_Info(void)
 {
-    U8 cmd = SRC_CMD_GET_INFO;
+    U8 data cmd = SRC_CMD_GET_INFO;
 
     // Command Format:
     // [0] Command
@@ -121,8 +122,8 @@ U8 SRC_Get_Info(U8 *buf)
     // [2] MCU Code
     // [3] BL Type
     // [4] Flash Page Size Code
-    // [5] Application FW Version Low (0)
-    // [6] Application FW Version High (1)
+    // [5] Flash Key0
+    // [6] Flash Key1
     // [7] SMB Device Address
     // [8] Application FW Start Addr Low (0)
     // [9] Application FW Start Addr (1)
@@ -130,9 +131,9 @@ U8 SRC_Get_Info(U8 *buf)
     // [11] Application FW End Addr Low (0)
     // [12] Application FW End Addr (1)
     // [13] Application FW End Addr High (2)
-	uart_receive(buf, SRC_CMD_GET_INFO_RX_SZ);
+	uart_receive(rx_buf, SRC_CMD_GET_INFO_RX_SZ);
 
-    return (buf[0]);
+    return (rx_buf[0]);
 }
 
 //-----------------------------------------------------------------------------
@@ -145,7 +146,7 @@ U8 SRC_Get_Info(U8 *buf)
 //
 //
 //-----------------------------------------------------------------------------
-U8 SRC_Get_Page_Info(U8* buf)
+U8 SRC_Get_Page_Info(void)
 {
 	U8 cmd = SRC_CMD_GET_PAGE_INFO;
 
@@ -161,9 +162,9 @@ U8 SRC_Get_Page_Info(U8* buf)
     // [4] Page CRC byte 0
     // [5] Page CRC byte 1
     // Note: If Num Pages is provided, add 1 to get actual num pages
-	uart_receive(buf, SRC_CMD_GET_PAGE_INFO_RX_SZ);
+	uart_receive(rx_buf, SRC_CMD_GET_PAGE_INFO_RX_SZ);
 
-    return (buf[0]);
+    return (rx_buf[0]);
 }
 
 //-----------------------------------------------------------------------------
@@ -176,7 +177,7 @@ U8 SRC_Get_Page_Info(U8* buf)
 //
 //
 //-----------------------------------------------------------------------------
-U8 SRC_Get_Page(U8 *buf)
+U8 SRC_Get_Page(U8 xdata *buf)
 {
 	U8 cmd = SRC_CMD_GET_PAGE;
     // Command Format:
@@ -221,11 +222,37 @@ U8 SRC_Disp_TGT_Info(void)
 }
 
 //-----------------------------------------------------------------------------
+// SRC_Disp_Info_Code
+//-----------------------------------------------------------------------------
+//
+// Return Value:  None
+// Parameters:    info_code
+//
+//
+//
+//-----------------------------------------------------------------------------
+U8 SRC_Disp_Info_Code(U8 info_code)
+{
+
+    // Command Format:
+    // [0] Command
+    // [1] Info Code
+	rx_buf[0] = SRC_CMD_DISP_INFO_CODE;
+	rx_buf[1] = info_code;
+	uart_send(rx_buf, 2);
+
+    // Response:
+    // [0] Return code (ACK/ERROR etc)
+	uart_receive(rx_buf, SRC_CMD_DISP_INFO_CODE_RX_SZ);
+    return (rx_buf[0]);
+}
+
+//-----------------------------------------------------------------------------
 // Interrupt Service Routines
 //-----------------------------------------------------------------------------
 
 //  uart send, count max number is 255, limited by XRAM size
-void uart_send(U8 *buf, U8 count)
+void uart_send(U8 data *buf, U8 count)
 {
 	U8 *ptr = buf;
 	do{

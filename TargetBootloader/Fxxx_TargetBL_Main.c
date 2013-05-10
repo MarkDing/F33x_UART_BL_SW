@@ -113,10 +113,15 @@ void main(void)
 	while(1)
 	{
 		while(SRC_Disp_TGT_Info() != SRC_RSP_OK);
-		SRC_Get_Info(rx_buf);
+		SRC_Response = SRC_Get_Info();
+        SRC_Validate_Response(SRC_Response, SRC_CMD_GET_INFO);
+        if (Last_Error != 0)
+	        goto error;
+		Flash_Key0 = rx_buf[5];
+		Flash_Key1 = rx_buf[6];
 		while(1)
 		{
-			SRC_Response = SRC_Get_Page_Info(rx_buf);
+			SRC_Response = SRC_Get_Page_Info();
 			SRC_Page_CRC = rx_buf[4] | (rx_buf[5] << 8);
 			page_addr = rx_buf[1] | (rx_buf[2] << 8);
             SRC_Validate_Response(SRC_Response, SRC_CMD_GET_PAGE_INFO);
@@ -136,9 +141,10 @@ void main(void)
         // Set flash keys to 0
         Flash_Key0 = 0;
         Flash_Key1 = 0;
+error:
         if (Last_Error != 0)
         {
-//            SRC_Response = SRC_Disp_Info_Code(Last_Error);
+            SRC_Response = SRC_Disp_Info_Code(Last_Error);
             Last_Error = 0;
         }
         RSTSRC = 0x12; // Initiate software reset with vdd monitor enabled
@@ -170,7 +176,7 @@ void SRC_Validate_Response(U8 response, U8 command)
         case SRC_CMD_GET_PAGE_INFO:
             break;
         case SRC_CMD_GET_PAGE:
-            buf_crc = Get_Buf_CRC(&(Page_Buf[0]), TGT_FLASH_PAGE_SIZE);
+            buf_crc = Get_Buf_CRC(Page_Buf, TGT_FLASH_PAGE_SIZE);
             if (buf_crc != SRC_Page_CRC)
             {
 	            Last_Error = ERR_SRC_CRC_MISMATCH;

@@ -49,8 +49,8 @@
 // Global Variables
 //-----------------------------------------------------------------------------
 
-U8 Flash_Key0 = 0xA5;
-U8 Flash_Key1 = 0xF1;
+U8 Flash_Key0 = 0;
+U8 Flash_Key1 = 0;
 
 //-----------------------------------------------------------------------------
 // Function Prototypes (Local)
@@ -86,16 +86,15 @@ void TGT_Erase_Page(U16 Addr)
 //
 // Writes 512 bytes of flash.
 //-----------------------------------------------------------------------------
-void TGT_Write_Flash(U8 *buf, U16 addr)
+void TGT_Write_Flash(U8 xdata *buf, U16 addr)
 {
-	U8 * ptr = buf;
+	U8 xdata * ptr = buf;
 	U16 count = TGT_FLASH_PAGE_SIZE;
     // Setup for flash operation
     while (count--)
     {
         PSCTL |= 0x01;
-        FLASH_Modify(addr, *ptr++);
-        addr ++;
+        FLASH_Modify(addr++, *ptr++);
     }
 }
 //-----------------------------------------------------------------------------

@@ -455,6 +455,8 @@ namespace SerialBootloaderDataSource
                     // Reset internal page index
                     mCurrentPageIndex = 0;
                     mValidPageCount = 0;
+                    mTransmitBuffer[5] = 0xA5; // Flash key 0
+                    mTransmitBuffer[6] = 0xF1; // Flash key 1 
                 }
                 else
                 {

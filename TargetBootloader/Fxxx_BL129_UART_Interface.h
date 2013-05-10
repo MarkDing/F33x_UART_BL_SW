@@ -98,14 +98,13 @@
 //-------------------------------
 // Support Function Prototypes
 //-------------------------------
-U8 Enter_BL_Mode (void);
-
 #endif
-U8 SRC_Get_Info(U8 *buf);
-U8 SRC_Get_Page_Info(U8* buf);
-U8 SRC_Get_Page(U8 *buf);
+U8 SRC_Get_Info(void);
+U8 SRC_Get_Page_Info(void);
+U8 SRC_Get_Page(U8 xdata *buf);
 U8 SRC_Disp_TGT_Info(void);
-void uart_send(U8 *buf, U8 count);
+U8 SRC_Disp_Info_Code(U8 info_code);
+void uart_send(U8 data *buf, U8 count);
 void uart_receive(U8 *buf, U16 count);
 
 //-----------------------------------------------------------------------------

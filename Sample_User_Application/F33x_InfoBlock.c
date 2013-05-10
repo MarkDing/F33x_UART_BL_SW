@@ -50,7 +50,7 @@ Byte offset (from last byte) - Field
 // Defines for use in the InfoBlock
 #define TGT_APP_INFOBLOCK_LENGTH 7
 
-#define TGT_MCU_CODE             0x39  // Code for this MCU partnumber
+#define TGT_MCU_CODE             0x33  // Code for this MCU partnumber
 #define TGT_BL_TYPE              0x01  // UART BL
 #define TGT_FLASH_PAGE_SIZE_CODE 0x01  // Flash Page Size Code: 1 => 512 bytes
 #define APP_FW_VERSION_HIGH      0x01

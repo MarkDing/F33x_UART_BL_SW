@@ -48,8 +48,6 @@
 //-----------------------------------------------------------------------------
 // "Public" Global Variables - Externs - Available to all modules
 //-----------------------------------------------------------------------------
-extern U8 Rx_Buf[TGT_BL_BUF_SIZE];
-extern U8 Tx_Buf[TGT_BL_BUF_SIZE];
 
 extern U8 Flash_Key0;
 extern U8 Flash_Key1;
@@ -87,9 +85,8 @@ void FLASH_Modify (U16 addr, U8 byte);
 // Bootloader Command Processors
 // Defined in "Fxxx_TargetBL_Commands.c"
 // -------------------------------------
-void TGT_Enter_BL_Mode (void);
 void TGT_Erase_Page(U16 Addr);
-void TGT_Write_Flash(U8 *buf, U16 addr);
+void TGT_Write_Flash(U8 xdata *buf, U16 addr);
 
 //-----------------------------------------------------------------------------
 // Header file include-once preprocessor directive
