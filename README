@@ -3,3 +3,73 @@ It contains several parts.
 * Bootloader firmware 
 * PC software application
 * Sample user application code
+About bootloader real size, we need to check .M51 file 
+instead of checking project build result output. The 
+reason is there some GAPS interval among vector table. 
+Here is the example:
+When build project, IDE tells code size is 947Bytes
+Program Size: data=75.0 xdata=512 code=947
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)
+
+But check the M51 file, The last function of bootloader locates 
+at 0x03EFH, size 7 bytes. So real code size should be 
+0x3EF+7 = 1014 bytes.
+
+* * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0002H     ABSOLUTE     
+                    0002H     0001H                  *** GAP ***
+            CODE    0003H     0002H     ABSOLUTE     
+            CODE    0005H     0004H     INBLOCK      ?PR?DISABLE_WATCHDOG?F33X_TARGETBL_DEVSPECIFIC
+                    0009H     0002H                  *** GAP ***
+            CODE    000BH     0002H     ABSOLUTE     
+                    000DH     0006H                  *** GAP ***
+            CODE    0013H     0002H     ABSOLUTE     
+                    0015H     0006H                  *** GAP ***
+            CODE    001BH     0002H     ABSOLUTE     
+                    001DH     0006H                  *** GAP ***
+            CODE    0023H     0002H     ABSOLUTE     
+                    0025H     0006H                  *** GAP ***
+            CODE    002BH     0002H     ABSOLUTE     
+                    002DH     0006H                  *** GAP ***
+            CODE    0033H     0002H     ABSOLUTE     
+ 
+BL51 BANKED LINKER/LOCATER V6.15                                                                  05/10/2013  14:53:23  PAGE 2
+
+
+                    0035H     0006H                  *** GAP ***
+            CODE    003BH     0002H     ABSOLUTE     
+            CODE    003DH     000AH     INBLOCK      ?PR?OSCILLATOR_INIT?F33X_TARGETBL_DEVSPECIFIC
+                    0047H     0004H                  *** GAP ***
+            CODE    004BH     0002H     ABSOLUTE     
+                    004DH     0006H                  *** GAP ***
+            CODE    0053H     0002H     ABSOLUTE     
+                    0055H     0006H                  *** GAP ***
+            CODE    005BH     0002H     ABSOLUTE     
+                    005DH     0006H                  *** GAP ***
+            CODE    0063H     0002H     ABSOLUTE     
+            CODE    0065H     0008H     INBLOCK      ?PR?DEVICE_INIT?F33X_TARGETBL_DEVSPECIFIC
+                    006DH     0006H                  *** GAP ***
+            CODE    0073H     0002H     ABSOLUTE     
+            CODE    0075H     00C0H     INBLOCK      ?PR?MAIN?FXXX_TARGETBL_MAIN
+            CODE    0135H     0085H     UNIT         ?C_C51STARTUP
+            CODE    01BAH     0040H     INBLOCK      ?PR?_TGT_WRITE_FLASH?FXXX_TARGETBL_COMMANDS
+            CODE    01FAH     003BH     UNIT         ?C?LIB_CODE
+            CODE    0235H     0034H     INBLOCK      ?PR?_GET_BUF_CRC?F33X_CRC
+            CODE    0269H     002DH     INBLOCK      ?PR?_SRC_VALIDATE_RESPONSE?FXXX_TARGETBL_MAIN
+            CODE    0296H     0028H     INBLOCK      ?PR?_FLASH_MODIFY?F33X_FLASH
+            CODE    02BEH     0024H     INBLOCK      ?PR?_SRC_GET_PAGE?F33X_COMM_UART
+            CODE    02E2H     0024H     INBLOCK      ?PR?_UPDATE_CRC?F33X_CRC
+            CODE    0306H     0021H     INBLOCK      ?PR?_UART_RECEIVE?F33X_COMM_UART
+            CODE    0327H     001FH     UNIT         ?C_INITSEG
+            CODE    0346H     001EH     INBLOCK      ?PR?_UART_SEND?F33X_COMM_UART
+            CODE    0364H     0018H     INBLOCK      ?PR?SRC_GET_PAGE_INFO?F33X_COMM_UART
+            CODE    037CH     0018H     INBLOCK      ?PR?UART0_INIT?F33X_TARGETBL_DEVSPECIFIC
+            CODE    0394H     0014H     INBLOCK      ?PR?_SRC_DISP_INFO_CODE?F33X_COMM_UART
+            CODE    03A8H     0014H     INBLOCK      ?PR?F33X_COMM_UART
+            CODE    03BCH     0012H     INBLOCK      ?PR?SRC_GET_INFO?F33X_COMM_UART
+            CODE    03CEH     0011H     INBLOCK      ?PR?SRC_DISP_TGT_INFO?F33X_COMM_UART
+            CODE    03DFH     0010H     INBLOCK      ?PR?PORT_INIT?F33X_TARGETBL_DEVSPECIFIC
+            CODE    03EFH     0007H     INBLOCK      ?PR?_TGT_ERASE_PAGE?FXXX_TARGETBL_COMMANDS
+
+
+

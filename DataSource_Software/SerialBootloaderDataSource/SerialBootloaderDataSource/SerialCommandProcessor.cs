@@ -11,7 +11,7 @@ namespace SerialBootloaderDataSource
     public class SerialCommandProcessor
     {
         public const int ReceiveBufferSize = 256;
-        public const int TransmitBufferSize = 514;
+        public const int TransmitBufferSize = 1026; // 514;
 
         // Response codes (see F50x_Master_Interface.h)
         public const byte SRC_RSP_OK = 0x70;
@@ -471,7 +471,16 @@ namespace SerialBootloaderDataSource
                 {
                     do
                     {
-                        if (mHexImage.PageSpecified512[mCurrentPageIndex] == true)
+                        bool tmp;
+                        if (mHexImage.FlashPageSize == 1024)
+                        {
+                            tmp = mHexImage.PageSpecified1024[mCurrentPageIndex];
+                        }
+                        else
+                        {
+                            tmp = mHexImage.PageSpecified512[mCurrentPageIndex];
+                        }
+                        if (tmp == true)
                         {
                             break;
                         }

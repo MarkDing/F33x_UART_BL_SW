@@ -69,26 +69,13 @@ void main(void)
     //---------------------------------------
     // Check the bootloader consition.
     //---------------------------------------
-    codeptr = (U8 code*)(APP_FW_SIG0_ADDR);
+    codeptr = (U8 code*)(APP_FW_SIG3_ADDR);
    // The Signature (in Flash) should be valid to allow application FW execution.
    // This is written at the end of the bootloading process by the bootloader.
-	if (*codeptr == SIG_BYTE0)
+    if((codeptr[0] == SIG_BYTE3) &&(codeptr[1] == SIG_BYTE2) &&(codeptr[2] == SIG_BYTE1) && (codeptr[3] == SIG_BYTE0))
     {
-		*codeptr--;
-    	if (*codeptr == SIG_BYTE1)
-     	{
-			*codeptr--;
-        	if (*codeptr == SIG_BYTE2)
-        	{
-				*codeptr--;
-            	if (*codeptr == SIG_BYTE3)
-		        {
-	                // All signature bytes match. 
-					device_mode = APP_MODE;
-      		    }
-        	}
-      	}
-	}
+   		device_mode = APP_MODE;
+    }
     if ((!BL_Override_Pin) || (((RSTSRC & PORSF) == 0) && ((RSTSRC & FERROR)
             != 0)))
     {

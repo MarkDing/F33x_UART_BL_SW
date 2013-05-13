@@ -63,6 +63,7 @@
 #define APP_FW_END_ADDR          0x1BFF
 
 #define APP_FW_SIG0_ADDR         APP_FW_END_ADDR
+#define APP_FW_SIG3_ADDR         (APP_FW_END_ADDR - 3)
 
 // Target Serial Number (for multi-drop buses)
 #define DEV_SERIAL_NUMBYTES      0     // 0=Disabled; Max: 7
