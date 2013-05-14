@@ -106,7 +106,7 @@ void SYSCLK_Init (void)
 //-----------------------------------------------------------------------------
 //
 // Configure the Crossbar and GPIO ports.
-// P3.3 - LED (push-pull)
+// P1.3 - LED (push-pull)
 //
 void PORT_Init (void)
 {

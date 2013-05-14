@@ -115,7 +115,7 @@ void PORT_Init(void)
 {
     // Initialize port I/O
     P0MDOUT = 0x10; // Enable UART0 TX as push-pull output
-    P1MDOUT = 0x04; // P1.3 (LED) is push-pull
+    P1MDOUT = 0x08; // P1.3 (LED) is push-pull
     P0SKIP = 0x03;
     XBR0 = 0x01; // Enable UART0
     XBR1 = 0x40; // Enable crossbar

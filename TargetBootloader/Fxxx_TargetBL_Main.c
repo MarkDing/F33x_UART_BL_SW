@@ -41,6 +41,7 @@
 // Global Variables
 //-----------------------------------------------------------------------------
 SBIT(BL_Override_Pin, SFR_P0, 7);
+sbit LED = P1^3;                          // LED='1' means ON
 SEGMENT_VARIABLE( Page_Buf[TGT_FLASH_PAGE_SIZE], U8, SEG_XDATA);
 
 U8 data SRC_Response;
@@ -76,12 +77,11 @@ void main(void)
     {
    		device_mode = APP_MODE;
     }
-    if ((!BL_Override_Pin) || (((RSTSRC & PORSF) == 0) && ((RSTSRC & FERROR)
-            != 0)))
+
+    if ((!BL_Override_Pin) || (((RSTSRC & PORSF) == 0) && (RSTSRC & FERROR)))
     {
         device_mode = BOOTLOADER_MODE;
     }
-
 
     if (device_mode == APP_MODE)
     {

@@ -1,4 +1,4 @@
-BL51 BANKED LINKER/LOCATER V6.22                                                                    05/13/2013  13:49:37  PAGE 1
+BL51 BANKED LINKER/LOCATER V6.22                                                                    05/14/2013  12:02:03  PAGE 1
 
 
 BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
@@ -67,7 +67,7 @@ LINK MAP OF MODULE:  C:\Users\mading\SkyDrive\Work\F330-bootloader\F33x_UART_BL_
             CODE    0033H     0002H     ABSOLUTE     
                     0035H     0006H                  *** GAP ***
             CODE    003BH     0002H     ABSOLUTE     
-BL51 BANKED LINKER/LOCATER V6.22                                                                  05/13/2013  13:49:37  PAGE 2
+BL51 BANKED LINKER/LOCATER V6.22                                                                  05/14/2013  12:02:03  PAGE 2
 
 
             CODE    003DH     000AH     INBLOCK      ?PR?OSCILLATOR_INIT?F33X_TARGETBL_DEVSPECIFIC
@@ -135,7 +135,7 @@ SEGMENT                                            DATA_GROUP
 
 ?PR?SRC_DISP_TGT_INFO?F33X_COMM_UART             0041H    0001H
   +--> ?PR?_UART_SEND?F33X_COMM_UART
-BL51 BANKED LINKER/LOCATER V6.22                                                                  05/13/2013  13:49:37  PAGE 3
+BL51 BANKED LINKER/LOCATER V6.22                                                                  05/14/2013  12:02:03  PAGE 3
 
 
   +--> ?PR?F33X_COMM_UART
@@ -203,7 +203,7 @@ SYMBOL TABLE OF MODULE:  C:\Users\mading\SkyDrive\Work\F330-bootloader\F33x_UART
   D:0041H         SYMBOL        addr
   -------         DO            
   D:0043H         SYMBOL        ptr
-BL51 BANKED LINKER/LOCATER V6.22                                                                  05/13/2013  13:49:37  PAGE 4
+BL51 BANKED LINKER/LOCATER V6.22                                                                  05/14/2013  12:02:03  PAGE 4
 
 
   D:0045H         SYMBOL        count
@@ -223,6 +223,7 @@ SYMBOL TABLE OF MODULE:  C:\Users\mading\SkyDrive\Work\F330-bootloader\F33x_UART
 
   -------         MODULE        FXXX_TARGETBL_MAIN
   C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0090H         PUBLIC        P1
   D:0008H         PUBLIC        SRC_Page_CRC
   D:000AH         PUBLIC        Last_Error
   D:000BH         PUBLIC        rx_buf
@@ -239,19 +240,19 @@ SYMBOL TABLE OF MODULE:  C:\Users\mading\SkyDrive\Work\F330-bootloader\F33x_UART
   D:003FH         SYMBOL        page_addr
   C:0113H         SYMBOL        error
   -------         ENDDO         
-  C:0075H         LINE#         64
   C:0075H         LINE#         65
   C:0075H         LINE#         66
-  C:0077H         LINE#         68
-  C:007CH         LINE#         72
-  C:0080H         LINE#         75
-  C:009AH         LINE#         76
+  C:0075H         LINE#         67
+  C:0077H         LINE#         69
+  C:007CH         LINE#         73
+  C:0080H         LINE#         76
   C:009AH         LINE#         77
-  C:009BH         LINE#         78
+  C:009AH         LINE#         78
   C:009BH         LINE#         79
-  C:00A8H         LINE#         81
+  C:009BH         LINE#         81
   C:00A8H         LINE#         82
-  C:00AAH         LINE#         83
+  C:00A8H         LINE#         83
+  C:00AAH         LINE#         84
   C:00AAH         LINE#         86
   C:00ADH         LINE#         87
   C:00ADH         LINE#         89
@@ -270,10 +271,10 @@ SYMBOL TABLE OF MODULE:  C:\Users\mading\SkyDrive\Work\F330-bootloader\F33x_UART
   C:00C8H         LINE#         110
   C:00C8H         LINE#         111
   C:00CCH         LINE#         112
+BL51 BANKED LINKER/LOCATER V6.22                                                                  05/14/2013  12:02:03  PAGE 5
+
+
   C:00D4H         LINE#         113
-BL51 BANKED LINKER/LOCATER V6.22                                                                  05/13/2013  13:49:37  PAGE 5
-
-
   C:00DCH         LINE#         114
   C:00E2H         LINE#         115
   C:00E6H         LINE#         116
@@ -338,10 +339,10 @@ SYMBOL TABLE OF MODULE:  C:\Users\mading\SkyDrive\Work\F330-bootloader\F33x_UART
   D:0083H         SYMBOL        DPH
   D:0082H         SYMBOL        DPL
   N:0008H         SYMBOL        HW_INTVEC_SEPARATION
+BL51 BANKED LINKER/LOCATER V6.22                                                                  05/14/2013  12:02:03  PAGE 6
+
+
   N:0003H         SYMBOL        HW_INTVEC_TABLE
-BL51 BANKED LINKER/LOCATER V6.22                                                                  05/13/2013  13:49:37  PAGE 6
-
-
   N:0000H         SYMBOL        IBPSTACK
   N:0100H         SYMBOL        IBPSTACKTOP
   N:0000H         SYMBOL        IDATALEN
@@ -406,10 +407,10 @@ SYMBOL TABLE OF MODULE:  C:\Users\mading\SkyDrive\Work\F330-bootloader\F33x_UART
   C:03ABH         LINE#         114
   C:03AEH         LINE#         118
   C:03B4H         LINE#         134
+BL51 BANKED LINKER/LOCATER V6.22                                                                  05/14/2013  12:02:03  PAGE 7
+
+
   C:03BAH         LINE#         136
-BL51 BANKED LINKER/LOCATER V6.22                                                                  05/13/2013  13:49:37  PAGE 7
-
-
   C:03BCH         LINE#         137
   -------         ENDPROC       SRC_GET_INFO
   -------         PROC          SRC_GET_PAGE_INFO
@@ -474,10 +475,10 @@ SYMBOL TABLE OF MODULE:  C:\Users\mading\SkyDrive\Work\F330-bootloader\F33x_UART
   C:033FH         LINE#         259
   C:034BH         LINE#         260
   C:034EH         LINE#         261
+BL51 BANKED LINKER/LOCATER V6.22                                                                  05/14/2013  12:02:03  PAGE 8
+
+
   C:0350H         LINE#         262
-BL51 BANKED LINKER/LOCATER V6.22                                                                  05/13/2013  13:49:37  PAGE 8
-
-
   C:0352H         LINE#         263
   -------         ENDPROC       _UART_SEND
   -------         PROC          _UART_RECEIVE
@@ -542,10 +543,10 @@ SYMBOL TABLE OF MODULE:  C:\Users\mading\SkyDrive\Work\F330-bootloader\F33x_UART
   D:008DH         PUBLIC        TH1
   C:0005H         PUBLIC        Disable_Watchdog
   D:008BH         PUBLIC        TL1
+BL51 BANKED LINKER/LOCATER V6.22                                                                  05/14/2013  12:02:03  PAGE 9
+
+
   B:0088H.6       PUBLIC        TR1
-BL51 BANKED LINKER/LOCATER V6.22                                                                  05/13/2013  13:49:37  PAGE 9
-
-
   D:00EFH         PUBLIC        RSTSRC
   C:036BH         PUBLIC        UART0_Init
   D:0098H         PUBLIC        SCON0
@@ -610,10 +611,10 @@ SYMBOL TABLE OF MODULE:  C:\Users\mading\SkyDrive\Work\F330-bootloader\F33x_UART
   C:0377H         LINE#         162
   C:0377H         LINE#         163
   C:0377H         LINE#         165
+BL51 BANKED LINKER/LOCATER V6.22                                                                  05/14/2013  12:02:03  PAGE 10
+
+
   C:037AH         LINE#         166
-BL51 BANKED LINKER/LOCATER V6.22                                                                  05/13/2013  13:49:37  PAGE 10
-
-
   C:037DH         LINE#         167
   C:0380H         LINE#         168
   C:0382H         LINE#         169
@@ -678,8 +679,8 @@ SYMBOL TABLE OF MODULE:  C:\Users\mading\SkyDrive\Work\F330-bootloader\F33x_UART
   C:0214H         PUBLIC        ?C?PLDIIDATA
   -------         ENDMOD        ?C?PLDIIDATA
 
+BL51 BANKED LINKER/LOCATER V6.22                                                                  05/14/2013  12:02:03  PAGE 11
+
+
 Program Size: data=75.0 xdata=512 code=930
-BL51 BANKED LINKER/LOCATER V6.22                                                                  05/13/2013  13:49:37  PAGE 11
-
-
 LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)
